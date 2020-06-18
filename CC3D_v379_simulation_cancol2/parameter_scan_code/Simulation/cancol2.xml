@@ -1,0 +1,102 @@
+<CompuCell3D Revision="20180722" Version="3.7.8">
+   <Potts>
+      <Dimensions x="100" y="100" z="1"/>
+      <Steps>1610</Steps>
+      <FluctuationAmplitude>
+         <FluctuationAmplitudeParameters CellType="C1" FluctuationAmplitude="0"/>
+         <FluctuationAmplitudeParameters CellType="Laminin" FluctuationAmplitude="0"/>
+         <FluctuationAmplitudeParameters CellType="Cancer" FluctuationAmplitude="1"/>
+         <FluctuationAmplitudeParameters CellType="C_Lysed" FluctuationAmplitude="0.1"/>
+         <FluctuationAmplitudeParameters CellType="L_Lysed" FluctuationAmplitude="0.1"/>
+         <FluctuationAmplitudeParameters CellType="NC1" FluctuationAmplitude="0"/>
+      </FluctuationAmplitude>
+      <Flip2DimRatio>2</Flip2DimRatio>
+      <NeighborOrder>2</NeighborOrder>
+      <RandomSeed>167473</RandomSeed>
+   </Potts>
+   <Plugin Name="CellType">
+      <CellType TypeId="0" TypeName="Medium"/>
+      <CellType TypeId="1" TypeName="C1"/>
+      <CellType TypeId="2" TypeName="Laminin"/>
+      <CellType TypeId="3" TypeName="Cancer"/>
+      <CellType TypeId="4" TypeName="C_Lysed"/>
+      <CellType TypeId="5" TypeName="L_Lysed"/>
+      <CellType TypeId="6" TypeName="NC1"/>
+   </Plugin>
+   <Plugin Name="Contact">
+      <Energy Type1="Medium" Type2="Medium">0</Energy>
+      <Energy Type1="Medium" Type2="C1">24</Energy>
+      <Energy Type1="Medium" Type2="Laminin">30</Energy>
+      <Energy Type1="Medium" Type2="Cancer">2</Energy>
+      <Energy Type1="Medium" Type2="C_Lysed">12</Energy>
+      <Energy Type1="Medium" Type2="L_Lysed">12</Energy>
+      <Energy Type1="C1" Type2="C1">24</Energy>
+      <Energy Type1="C1" Type2="Laminin">40</Energy>
+      <Energy Type1="C1" Type2="Cancer">4</Energy>
+      <Energy Type1="C1" Type2="C_Lysed">24</Energy>
+      <Energy Type1="C1" Type2="L_Lysed">24</Energy>
+      <Energy Type1="Medium" Type2="NC1">24</Energy>
+      <Energy Type1="NC1" Type2="C1">24</Energy>
+      <Energy Type1="NC1" Type2="NC1">24</Energy>
+      <Energy Type1="NC1" Type2="Laminin">40</Energy>
+      <Energy Type1="NC1" Type2="Cancer">24</Energy>
+      <Energy Type1="NC1" Type2="C_Lysed">24</Energy>
+      <Energy Type1="NC1" Type2="L_Lysed">24</Energy>
+      <Energy Type1="Laminin" Type2="Laminin">10</Energy>
+      <Energy Type1="Laminin" Type2="Cancer">18</Energy>
+      <Energy Type1="Laminin" Type2="C_Lysed">28</Energy>
+      <Energy Type1="Laminin" Type2="L_Lysed">20</Energy>
+      <Energy Type1="Cancer" Type2="Cancer">18</Energy>
+      <Energy Type1="Cancer" Type2="C_Lysed">5</Energy>
+      <Energy Type1="Cancer" Type2="L_Lysed">14</Energy>
+      <Energy Type1="L_Lysed" Type2="L_Lysed">20</Energy>
+      <Energy Type1="C_Lysed" Type2="C_Lysed">24</Energy>
+      <NeighborOrder>2</NeighborOrder>
+   </Plugin>
+   <Plugin Name="Volume"/>
+   <Plugin Name="VolumeTracker"/>
+   <Plugin Name="Surface"/>
+   <Plugin Name="SurfaceTracker"/>
+   <Plugin Name="NeighborTracker"/>
+   <Plugin Name="CenterOfMass"/>
+   <Plugin Name="ExternalPotential"/>
+   <Plugin Name="OrientedGrowth">
+      <Penalty>300</Penalty>
+      <Falloff>2</Falloff>
+   </Plugin>
+   <Plugin Name="PixelTracker"/>
+   <Plugin Name="Secretion">
+      <Field Name="MMP"/>
+      <Field Name="I"/>
+      <Field Name="GF"/>
+   </Plugin>
+   <Plugin Name="Chemotaxis">
+      <ChemicalField Name="GF">
+         <ChemotaxisByType Lambda="300" Type="Cancer"/>
+      </ChemicalField>
+   </Plugin>
+   <Steppable Type="DiffusionSolverFE">
+      <DiffusionField Name="MMP">
+         <DiffusionData>
+            <FieldName>MMP</FieldName>
+            <DiffusionConstant>0.025</DiffusionConstant>
+            <DecayConstant>0.003</DecayConstant>
+         </DiffusionData>
+      </DiffusionField>
+      <DiffusionField Name="I">
+         <DiffusionData>
+            <FieldName>I</FieldName>
+            <DiffusionConstant>0.04</DiffusionConstant>
+            <DecayConstant>0.003</DecayConstant>
+         </DiffusionData>
+      </DiffusionField>
+      <DiffusionField Name="GF">
+         <DiffusionData>
+            <FieldName>GF</FieldName>
+            <DiffusionConstant>0.05</DiffusionConstant>
+            <DecayConstant>0.001</DecayConstant>
+            <DoNotDecayIn>C1</DoNotDecayIn>
+         </DiffusionData>
+      </DiffusionField>
+   </Steppable>
+</CompuCell3D>

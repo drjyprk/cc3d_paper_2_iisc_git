@@ -1,0 +1,18 @@
+<CompuCell3DLatticeData Version="1.0">
+   <Dimensions x="100" y="100" z="1"/>
+   <Lattice Type="Square"/>
+   <Output CoreFileName="cancol2_cc3d" Directory="C:\Users\Durjay\CC3DWorkspace\cancol2_GFattr_1\7010\LatticeData" Frequency="1500" NumberOfSteps="1610"/>
+   <CellType TypeId="0" TypeName="Medium"/>
+   <CellType TypeId="1" TypeName="C1"/>
+   <CellType TypeId="2" TypeName="Laminin"/>
+   <CellType TypeId="3" TypeName="Cancer"/>
+   <CellType TypeId="4" TypeName="C_Lysed"/>
+   <CellType TypeId="5" TypeName="L_Lysed"/>
+   <CellType TypeId="6" TypeName="NC1"/>
+   <Fields>
+      <Field Name="I" Type="ConField"/>
+      <Field Name="GF" Type="ConField"/>
+      <Field Name="Cell_Field" Type="CellField"/>
+      <Field Name="MMP" Type="ConField"/>
+   </Fields>
+</CompuCell3DLatticeData>

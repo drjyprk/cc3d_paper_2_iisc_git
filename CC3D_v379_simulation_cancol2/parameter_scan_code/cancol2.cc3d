@@ -1,0 +1,6 @@
+<Simulation version="3.6.2">
+   <XMLScript Type="XMLScript">Simulation/cancol2.xml</XMLScript>
+   <PythonScript Type="PythonScript">Simulation/cancol2.py</PythonScript>
+   <Resource Type="Python">Simulation/cancol2Steppables.py</Resource>
+   <ParameterScan Type="ParameterScan">Simulation/ParameterScanSpecs.xml</ParameterScan>
+</Simulation>

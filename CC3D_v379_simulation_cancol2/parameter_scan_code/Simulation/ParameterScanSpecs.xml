@@ -1,0 +1,29 @@
+<ParameterScan version="3.7.0">
+   <OutputDirectory>cancol2_GFattr_1</OutputDirectory>
+   <ParameterList Resource="Simulation/cancol2Steppables.py">
+      <Parameter CurrentIteration="0" Name="var" Type="PYTHON_GLOBAL" ValueType="float">
+         <Values>2.0,4.0,6.0,8.0,10.0</Values>
+      </Parameter>
+      <Parameter CurrentIteration="0" Name="varii" Type="PYTHON_GLOBAL" ValueType="float">
+         <Values>0.0,0.25,0.5,0.75,1.0</Values>
+      </Parameter>
+   </ParameterList>
+   <ParameterList Resource="Simulation/cancol2.xml">
+      <Parameter CurrentIteration="0" Name="Energy" Type="XML_CDATA" ValueType="int">
+         [['CompuCell3D','Revision','20180722','Version','3.7.8'],['Plugin','Name','Contact'],['Energy','Type1','C1','Type2','Cancer']]
+         <Values>4,18,32,46,60</Values>
+      </Parameter>
+      <Parameter CurrentIteration="0" Name="Energy" Type="XML_CDATA" ValueType="int">
+         [['CompuCell3D','Revision','20180722','Version','3.7.8'],['Plugin','Name','Contact'],['Energy','Type1','Cancer','Type2','Cancer']]
+         <Values>4,18,32,46,60</Values>
+      </Parameter>
+      <Parameter CurrentIteration="0" Name="Energy" Type="XML_CDATA" ValueType="int">
+         [['CompuCell3D','Revision','20180722','Version','3.7.8'],['Plugin','Name','Contact'],['Energy','Type1','Laminin','Type2','Cancer']]
+         <Values>4,18,32,46,60</Values>
+      </Parameter>
+      <Parameter CurrentIteration="0" Name="DiffusionConstant" Type="XML_CDATA" ValueType="float">
+         [['CompuCell3D','Revision','20180722','Version','3.7.8'],['Steppable','Type','DiffusionSolverFE'],['DiffusionField','Name','MMP'],['DiffusionData'],['DiffusionConstant']]
+         <Values>0.005,0.01,0.025,0.04,0.055</Values>
+      </Parameter>
+   </ParameterList>
+</ParameterScan>
