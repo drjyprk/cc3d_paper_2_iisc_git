@@ -1,5 +1,7 @@
-%%%%%%%%%%%%%%run this part only once to have consistent clusters
-%xn123= normalize(x123)
+% to have transition from one of the K(=3)-means clusters by input variable change
+
+%%%%%%%%%%%%%% run this part only once to have consistent clusters for subsequent runs
+% xn123= normalize(x123)
 % kclust= kmeans(xn123,3)
 % cmap = parula(3);
 % clf; hold on
@@ -19,22 +21,19 @@
 % hold off
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-inp=4
-kmain=k1
+inp=4 % the column number of input variable in ix123
+kmain=k1 % select the specific k=3's cluster here
 inTc1=[]
 ksrc=[]
 for i=1:length(kmain)
-    if ix123(kmain(i),inp)== 4 || ix123(kmain(i),inp)== 18
+    if ix123(kmain(i),inp)== 4 || ix123(kmain(i),inp)== 18 % set the initial values of the input variable here
         inTc1(end+1,:)=ix123(kmain(i),:)
         ksrc(end+1)=kmain(i)
     end
 end
 
-% changing input variables
-%inTc1(:,6)= max(ix123(:,6)) %mmp
-%inTc1(:,1)= max(ix123(:,1)) %RD
-%inTc1(:,4)= min(ix123(:,4)) %cell-cell
-inTc1(:,inp)= max(ix123(:,inp)) 
+% changing the input variable values
+inTc1(:,inp)= max(ix123(:,inp)) % maximizing or minimizing depending on the initial set values
 
 bin1=[]
 bin2=[]
@@ -57,11 +56,11 @@ for i=1:length(inTc1)
 end
 F1= figure
 pieX= [length(bin1) length(bin2) length(bin3)]
-labels={'C1:indolent','C2:collective','C3:disperse'}
+labels={'C1:indolent','C2:collective','C3:disperse'} % set it according to however 3 clusters come in K=3-means
 explode=[0 0 0]
 pie(pieX)
 legend(labels)
-title('indolent-4-18-to-C-C-CE-max')
+title('indolent-4-18-to-C-C-CE-max') % change it according to configuration
 
 clear xsrc
 for i=1:length(ksrc)

@@ -1,12 +1,13 @@
-%k=k1
-%clear inTc1
-%each input variables are in each column of any matrix
-range(:,1)=[2.0,4.0,6.0,8.0,10.0]
-range(:,2)=[0.0,0.25,0.5,0.75,1.0]
-range(:,3)=[4,18,32,46,60]
-range(:,4)=[4,18,32,46,60]
-range(:,5)=[4,18,32,46,60]
-range(:,6)=[0.005,0.01,0.025,0.04,0.055]
+% to create tables with fraction of values of input variables 
+
+% load x123, ix123
+% the values of input variables are in saame order as their column number in ix123
+range(:,1)=[2.0,4.0,6.0,8.0,10.0] % RDcoop
+range(:,2)=[0.0,0.25,0.5,0.75,1.0] % Growth rate coefficient
+range(:,3)=[4,18,32,46,60] % C-C1 CE
+range(:,4)=[4,18,32,46,60] % C-C CE
+range(:,5)=[4,18,32,46,60] % C-lam CE
+range(:,6)=[0.005,0.01,0.025,0.04,0.055] % mmp diff
 F1=figure
 kclust= kmeans(xn123,3)
 cmap = parula(3);
@@ -39,7 +40,7 @@ for i=1:length(s)
     end
     sc{i}= struct(field, clustdata)
 end
-%creating tables
+%creating tables in orders of the column numbers of input variables
 for i= 1:variables
     field= strcat("inpvar",num2str(i))
     clear allcvar
@@ -49,5 +50,5 @@ for i= 1:variables
     end
         varmaindata{i}=struct(field,allcvar)
         vartable= array2table(allcvar,'VariableNames',{'Feet','Inches','Centimeters'})
-        writetable(vartable,fullfile('C:\Users\durja\Desktop\temp',strcat('table',num2str(i),'.csv')));
+        writetable(vartable,fullfile('C:\Users\durja\Desktop\temp',strcat('table',num2str(i),'.csv'))); % change the folder location
 end

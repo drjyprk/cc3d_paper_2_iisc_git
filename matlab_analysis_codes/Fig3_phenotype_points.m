@@ -1,11 +1,12 @@
-%load x123, xn123, 5val_6inp_1 
-
+% to find simulation screenshot from parameter scan folder
+%load x123, 5_val_T123_mm_do_mincircle
+xn123= normalise(x123)
 kclust= kmeans(xn123,3)
 cmap = parula(3); 
 
 cindx=[]
 for i=1:length(x123)
-if x123(i,1)>14000 && x123(i,1)<16000 && x123(i,2)>20 && x123(i,2)<25
+if x123(i,1)>14000 && x123(i,1)<16000 && x123(i,2)>20 && x123(i,2)<25 %selecting the search region of the phenospace
 cindx(end+1)= i
 end
 end
@@ -23,6 +24,7 @@ end
 %%%%%%%%%%%%%%%%%%%% please replace 'parameterscan/directory/location' with
 %%%%%%%%%%%%%%%%%%%% actual CC3D parameterscan directory location
 strimg= (strcat('C:\Users\Durjay\CC3DWorkspace\cancol2_GFattr_1\',num2str(mainindx1),'\Cell_Field_CellField_2D_XY_0\Cell_Field_CellField_2D_XY_0_1500.png'))
+% replace the first string in the above line with location of the folder from parameter scan
 img= imread(strimg)
 F1=figure
 clf;

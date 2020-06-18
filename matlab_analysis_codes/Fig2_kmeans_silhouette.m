@@ -1,8 +1,9 @@
-%load x123, xn123, 5val_6inp_1
+%load x123, 5val_6inp_1
 
 
-%%%%%%%%%%%%%
-kval=4
+%%%%%%%%%%%%% this section is for silhouette plot of specific k-means clustering
+xn123= normalize(x123)
+kval=4 % the value of k-means clusters
 kclust= kmeans(xn123,kval) 
 
  cmap = parula(kval); 
@@ -20,6 +21,8 @@ for i=1:kval
         k4=k    
     end
 end
+% k1,2,3,4 store the index of points in x123 with respect to clusters
+% add k5, k6 etc similarly for to store for more clusters 
 legend(hi, {'c1' 'c2' 'c3' 'c4'})
 hold off 
 
@@ -32,8 +35,9 @@ hold off
 
 
 %%%%%%%% for getiing sttistics for k=2,10 and 15 replicates
+% uncomment and run the below section seperately from the above section
 
-% FinalDestinationStr= 'C:\Users\Durjay\Desktop\all_kmeans_plasticity_5val_3rep_1\'
+% FinalDestinationStr= 'C:\Users\Durjay\Desktop\all_kmeans_plasticity_5val_3rep_1\' % replace this with appropriate folder location
 % k= 10
 % n= 15
 % for i=2:k

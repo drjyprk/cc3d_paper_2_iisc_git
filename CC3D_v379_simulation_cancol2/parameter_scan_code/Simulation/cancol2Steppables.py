@@ -90,7 +90,7 @@ class VolumeParamSteppable(SteppableBasePy):
                 s=cell.surface
                 g= (s-k)/40
                 GFc=fieldGF[int(round(cell.xCOM)),int(round(cell.yCOM)),int(round(cell.zCOM))]
-                cell.targetVolume+= varii*((g/4 + (GFc/7))/3)
+                cell.targetVolume+= varii*((g/4 + (GFc/7))/3) #Growth rate
                 cell.lambdaVolume=20.0 #this term can be changed in correlation with stiffness of neighbors, as a fn of neighbor type,no etc
                 if int(round(cell.xCOM))>97 or int(round(cell.xCOM))<3 or int(round(cell.yCOM))>97 or int(round(cell.yCOM))<3:
                     self.deleteCell(cell)
@@ -107,7 +107,6 @@ class VolumeParamSteppable(SteppableBasePy):
         global mcsOut
         global c_value
         self.f=open(CompuCellSetup.getScreenshotDirectoryName() + "\cvalue.txt","w+")
-        #f= open("cvalue.txt","w+")
         self.f.write("%d\r\n\n"%mcsOut)
         for ck in c_value:
             self.f.write("%d\r"%ck)

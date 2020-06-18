@@ -60,8 +60,6 @@ for i = 1:nrows
     temp_img = imoverlay(drawCircle,s3,'white');
     text_str = ['radius:' num2str(radiusMin)  '; circle area:' num2str(circleArea) '; cell area:' num2str(S(1)) '; surface:' num2str(T(i)) '; dconn_obj:' num2str(N1(i))];
     finalImg = insertText(temp_img,textPosition,text_str,'FontSize',10,'BoxColor','white','BoxOpacity',0.2,'TextColor','white');
-    %rename = convertCharsToStrings(str);
-    %Frename = regexp(rename,'["]');
     F4= figure
     imshow(s3);
     hold on
@@ -136,7 +134,6 @@ for i = 1:nrows
         sstd(i)=0
     end
 
-    %DestinationStr = ans.fileName{1};
     DestI = strfind(str,'Cell_Field_');
     FinalDestinationStr = extractBefore(str,DestI(1));
     mkdir([FinalDestinationStr,'processed']);

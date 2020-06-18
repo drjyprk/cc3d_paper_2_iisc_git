@@ -18,8 +18,8 @@ xmlf = minidom.parse(filename)
 items = xmlf.getElementsByTagName('Energy')
 e1 = items[22].childNodes[0].data
 e = float(e1)
-var = 2.0
-varii = 0.5
+var = 2.0 #RD_coop value
+varii = 0.5 #growth rate coefficient
 c=0
 mcsOut=0
 
@@ -106,9 +106,9 @@ class VolumeParamSteppable(SteppableBasePy):
     def finish(self):
         global mcsOut
         global c_value
+        # saving number of cells getting deleted at lattice boundary at each mcs
         self.f=open(CompuCellSetup.getScreenshotDirectoryName() + "\cvalue.txt","w+")
-        #f= open("cvalue.txt","w+")
-        self.f.write("%d\r\n\n"%mcsOut)
+        self.f.write("%d\r\n\n"%mcsOut) #saving the number of MCS when cells start getting deleted
         for ck in c_value:
             self.f.write("%d\r"%ck)
         self.f.close()        
